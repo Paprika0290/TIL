@@ -58,3 +58,20 @@ public String solution(String[] participant, String[] completion) {
         System.out.println(answer);
     }
 ```
+
+- 프로그래머스 lessons 1845 __[폰켓몬](https://school.programmers.co.kr/learn/courses/30/lessons/1845)__<br>
+```java
+public static int solution2(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+
+        for(int num : nums) {
+            set.add(num);
+        }
+
+        if(set.size() >= (nums.length/2) ) {
+            return nums.length/2;
+        }
+
+        return set.size();
+    }
+```
