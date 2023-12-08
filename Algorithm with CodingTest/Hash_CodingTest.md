@@ -75,3 +75,24 @@ public static int solution2(int[] nums) {
         return set.size();
     }
 ```
+
+- 프로그래머스 lessons 42577 __[전화번호 목록](https://school.programmers.co.kr/learn/courses/30/lessons/42577)__ <br>
+```java
+public static boolean solution(String[] phone_book) {
+        HashSet<String> set = new HashSet<>();
+
+        for(String phone: phone_book) {
+            set.add(phone);
+        }
+
+        for(String phone : phone_book) {
+            for(int i = 0; i < phone.length(); i++) {
+                if(set.contains(phone.substring(0, i))) {
+                    System.out.println(phone);
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+```
