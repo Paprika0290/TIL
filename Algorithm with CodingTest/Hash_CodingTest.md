@@ -115,3 +115,47 @@ public static int solution(String[][] clothes) {
         return (answer - 1);
     }
 ```
+
+- 프로그래머스 lessons 42579 __[베스트앨범](https://school.programmers.co.kr/learn/courses/30/lessons/42579)__ <br>
+```java
+    public int[] solution(String[] genres, int[] plays) {
+HashMap<String, Integer> genreSort = new HashMap<>();
+        for(int i = 0; i < genres.length; i++) {
+            genreSort.put(genres[i], genreSort.getOrDefault(genres[i], 0) + plays[i]);
+        }
+
+        List<String> genreList = new ArrayList<>(genreSort.keySet());
+        Collections.sort(genreList, (g1, g2) -> (genreSort.get(g2) - genreSort.get(g1)));
+
+        List<Integer> answerList = new ArrayList<>();
+        genreList.forEach(li -> {
+            HashMap<Integer, Integer> playsMap = new HashMap<>();
+            for(int i = 0; i < genres.length; i++) {
+                if(li.equals(genres[i])) {
+                    playsMap.put(i, plays[i]);
+                }
+            }
+
+            List<Integer> playsList = new ArrayList<>(playsMap.keySet());
+            Collections.sort(playsList, (m1, m2) -> (playsMap.get(m2) - playsMap.get(m1)));
+
+            int count;
+            if(playsList.size() > 2) {
+                count = 2;
+            }else {
+                count = playsList.size();
+            }
+
+            for(int i = 0; i < count; i++) {
+                answerList.add(playsList.get(i));
+            }
+        });
+
+        int[] answer = new int[answerList.size()];
+        for(int i = 0; i < answerList.size(); i++) {
+            answer[i] = answerList.get(i);
+        }
+
+        return answer;
+    }        
+```
